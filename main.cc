@@ -29,7 +29,7 @@ void display(void)
     // We are going to set our position to be down the Y-Axis looking at the
     // center of the coordinate frame.  The positive Z-Axis will be up.
 
-    gluLookAt( 20.0,   0.0, 5.0,  // Eye
+    gluLookAt( 20.0,   5.0, 5.0,  // Eye
                 0.0,   0.0, 0.0,  // Center
                 0.0,   0.0, 1.0); // Up
 
@@ -38,20 +38,7 @@ void display(void)
 
     glColor3f(0.0,1.0,0.0);
 
-
-    // Set up my global coordinate system for drawing
-    // Be sure to draw within my clipping planes! (check gluPerspective)
-
-    // Try commenting out each of the following lines independently to see how
-    // it changes the scene 
-    /*
-       glTranslated(0.0,0.0,4.0);    
-       glRotated(90.0,0,1,0);
-       glRotated(90.0,1,0,0);
-       glRotated(90.0,0,1,0);
-    */
-
-    // This should be to draw the vertical support
+    // This should be to draw a cylinder 
     glPushMatrix();
     glTranslated(2.0,0.0,0.0);    
     glTranslated(0.0,0.0,0.0);    
@@ -64,7 +51,7 @@ void display(void)
             (GLint)    20 );
     glPopMatrix();
 
-    // This should draw a doughnut 
+    // This should draw a green doughnut 
     glPushMatrix();
     glRotated(90.0,0,1,0);
     glTranslatef(2.0,0.0,0.0);
@@ -75,6 +62,17 @@ void display(void)
             (GLint)     10,
             (GLint)     20 );
     glPopMatrix();
+
+    // This should draw a red sphere 
+    glPushMatrix();
+    glTranslatef(-3.0,1.0,1.0);
+    glColor3f (1.0,0.0,0.0);
+    gluSphere(gluNewQuadric(), 
+             (GLdouble) 1.5,
+             (GLint)     10,
+             (GLint)     10 );
+    glPopMatrix();
+
 
     glFlush();
 
